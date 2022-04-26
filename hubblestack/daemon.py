@@ -443,7 +443,7 @@ def run_function():
         if not __opts__['no_pprint']:
             pprint.pprint(ret)
         else:
-            print(ret
+            print(ret)
 
 def environs_update():
     if 'flatcar' in os.uname().version.lower():
