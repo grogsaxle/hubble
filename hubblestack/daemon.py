@@ -443,7 +443,11 @@ def run_function():
         if not __opts__['no_pprint']:
             pprint.pprint(ret)
         else:
-            print(ret)
+            print(ret
+
+def environs_update():
+    if 'flatcar' in os.uname().version.lower():
+        os.environ['OPENSSL_CERT_DIR'] = '/usr/share/ca-certificates/'
 
 
 def load_config(args=None):
@@ -452,6 +456,8 @@ def load_config(args=None):
     """
 
     global __opts__
+
+    environs_update()
 
     # Parse arguments
     parsed_args = parse_args(args=args)
