@@ -2,6 +2,9 @@ scripts/temp/
 hubble.tar.gz
 hubble.spec
 
+# vim
+*.sw*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
