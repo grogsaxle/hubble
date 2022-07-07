@@ -24,9 +24,9 @@ class DedupFilterTestCase(TestCase):
 
     def test_expire(self):
         d = DedupFilter(maxlen=3,expire_seconds=2)
-        d.assertFalse(d.filter('alice'))
+        self.assertFalse(d.filter('alice'))
         time.sleep(3)
-        d.assertFalse(d.filter('alice'))
+        self.assertFalse(d.filter('alice'))
 
     def test_maxlen(self):
         d = DedupFilter(maxlen=3)
