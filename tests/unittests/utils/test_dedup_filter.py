@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import hubblestack.utils.dedup_filter
+from hubblestack.utils.dedup_filter import DedupFilter
 
 # Import Salt Testing libs
 from tests.support.unit import TestCase
