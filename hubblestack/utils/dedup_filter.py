@@ -37,7 +37,7 @@ class DedupFilter:
             return None
 
     def _add(self, data):
-        value = {'time': time.now(), 'data': data}
+        value = {'time': time.time(), 'data': data}
         self.cache.append(value)
         return value
 
@@ -54,7 +54,7 @@ class DedupFilter:
         """
         cached_value = self.refresh(data)
         if cached_value == None:
-            self.add(data)
+            self._add(data)
             return False
         return True
 
