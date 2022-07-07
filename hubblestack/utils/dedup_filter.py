@@ -1,4 +1,4 @@
-import collections.dequeue
+import collections.deque
 import time
 
 
