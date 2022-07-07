@@ -7,7 +7,7 @@ class DedupFilter:
     def __init__(self, maxlen = 0, expire_seconds = 24*60*60, on_expire = None):
         self.maxlen = maxlen
         self.cache = deque(maxlen = self.maxlen)
-        seld.expire_seconds = expire_seconds
+        self.expire_seconds = expire_seconds
 
     """
     cache structure:
