@@ -16,10 +16,15 @@ class DedupFilter:
     
     def _expire(self):
         now = time.time()
-        for data, ts in self.cache:
-            if (now - ts) > self.expire_seconds:
-                # remove from cache
-                self.cache.delete(data)
+        expired = True
+        while expired:
+            expired = False
+            for i in self.cache:
+                if (now - i['time']) > self.expire_seconds:
+                    # remove from cache
+                    self.cache.delete(i)
+                    expired = True
+                    break
 
 
     def find(self, data):
@@ -52,6 +57,7 @@ class DedupFilter:
         if not in cache, return false
         if in cache, return true
         """
+        self._expire()
         cached_value = self.refresh(data)
         if cached_value == None:
             self._add(data)
