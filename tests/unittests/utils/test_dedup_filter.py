@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from hubblestack.utils.dedup_filter import DedupFilter
+import time
 
 # Import Salt Testing libs
 from tests.support.unit import TestCase
@@ -20,5 +21,19 @@ class DedupFilterTestCase(TestCase):
         self.assertTrue(d.filter({'alice': 'alice'}))
         self.assertFalse(d.filter({'bob':'bob'}))
         self.assertTrue(d.filter({'bob': 'bob'}))
+
+    def test_expire(self):
+        d = DedupFilter(maxlen=3,expire_seconds=2)
+        d.assertFalse(d.filter('alice'))
+        time.sleep(3)
+        d.assertFalse(d.filter('alice'))
+
+    def test_maxlen(self):
+        d = DedupFilter(maxlen=3)
+        self.assertFalse(d.filter('alice'))
+        self.assertFalse(d.filter('bob'))
+        self.assertFalse(d.filter('charles'))
+        self.assertFalse(d.filter('daisy'))
+        self.assertFalse(d.filter('alice'))
 
 
