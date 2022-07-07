@@ -23,7 +23,7 @@ class DedupFilter:
             for i in self.cache:
                 if (now - i['time']) > self.expire_seconds:
                     # remove from cache
-                    self.cache.delete(i)
+                    self.cache.remove(i)
                     expired = True
                     break
 
