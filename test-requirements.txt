@@ -29,3 +29,4 @@ tornado
 urllib3
 vulners
 pyopenssl
+pytest-pythonpath

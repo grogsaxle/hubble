@@ -666,7 +666,15 @@ class LazyLoader(hubblestack.utils.lazy.LazyDict):
             try:
                 # Make sure we have a sorted listdir in order to have
                 # expectable override results
-                files = sorted(x for x in os.listdir(mod_dir) if x != "__pycache__")
+                #files = sorted(x for x in os.listdir(mod_dir) if x != "__pycache__")
+                files = []
+                for rts, ds, fs in os.walk(mod_dir):
+                    if '__pycache__' not in rts:
+                        for f in fs:
+                            files.append(os.path.join(rts, f))
+
+                [os.path.join(dp, f) for dp, dn, fn in os.walk(os.path.expanduser("~/files")) for f in fn]
+
             except OSError:
                 continue  # Next mod_dir
 

@@ -15,11 +15,13 @@ def dump_var_file(var, name='var', dumpster='tests/unittests/output'):
 @pytest.mark.usefixtures('osqueryd') # starts osqueryd in the background
 class TestNebula():
     def test___virtual__(self):
-        import hubblestack.modules.nebula_osquery
-        var = hubblestack.modules.nebula_osquery.__virtual__()
+        import hubblestack.modules.nebula
+        var = hubblestack.modules.nebula.__virtual__()
         assert var == 'nebula'
 
     def test_loader(self, __mods__):
+        for k in __mods__.keys():
+            print(k)
         assert 'nebula.queries' in __mods__
 
     def test_hubble_versions(self, __mods__):
@@ -55,6 +57,8 @@ class TestNebula():
             assert m in hubble_versions['data'][0]
 
     def test_top(self, __mods__, __grains__):
+        for k in __mods__.keys():
+            print(k)
         query_group = 'day'
         topfile = 'salt://top.nebula'
         verbose = False,
