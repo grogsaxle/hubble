@@ -94,7 +94,7 @@ def extensions(extensions_topfile=None, extensions_loadfile=None):
         extensions_topfile = "salt://hubblestack_nebula_v2/top.extensions"
 
     try:
-        topdata = get_top_data(extensions_topfile)
+        topdata = get_top_data(extensions_topfile, __mods__)
     except Exception:
         log.info("An error occurred fetching top data for nebula.extensions.", exc_into=True)
         return False

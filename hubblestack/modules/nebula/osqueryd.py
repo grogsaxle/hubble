@@ -306,7 +306,7 @@ def _generate_osquery_conf_file(conftopfile):
     cachedir = os.path.join(__opts__.get("cachedir"), "files", saltenv, "hubblestack_nebula_v2")
     base_path = cachedir
 
-    osqd_configs = get_top_data(conftopfile)
+    osqd_configs = get_top_data(conftopfile, __mods__)
     configfile = os.path.join(base_path, "osquery.conf")
     conf_data = {}
     osqd_configs = ["salt://hubblestack_nebula_v2/" + config.replace(".", "/") + ".yaml" for config in osqd_configs]
@@ -347,7 +347,7 @@ def _generate_osquery_flags_file(flagstopfile):
     cachedir = os.path.join(__opts__.get("cachedir"), "files", saltenv, "hubblestack_nebula_v2")
     base_path = cachedir
 
-    osqd_flags = get_top_data(flagstopfile)
+    osqd_flags = get_top_data(flagstopfile, __mods__)
     flagfile = os.path.join(base_path, "osquery.flags")
     flags_data = {}
     osqd_flags = ["salt://hubblestack_nebula_v2/" + config.replace(".", "/") + ".yaml" for config in osqd_flags]

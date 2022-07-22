@@ -59,7 +59,7 @@ def dict_update(dest, upd, recursive_update=True, merge_lists=False):
             dest[k] = upd[k]
     return dest
 
-def get_top_data(topfile):
+def get_top_data(topfile, __mods__):
     """
     Function that reads the topfile and returns a list of matched configs that
     represent .yaml config files

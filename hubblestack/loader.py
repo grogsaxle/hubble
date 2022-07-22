@@ -673,8 +673,6 @@ class LazyLoader(hubblestack.utils.lazy.LazyDict):
                         for f in fs:
                             files.append(os.path.join(rts, f))
 
-                [os.path.join(dp, f) for dp, dn, fn in os.walk(os.path.expanduser("~/files")) for f in fn]
-
             except OSError:
                 continue  # Next mod_dir
 

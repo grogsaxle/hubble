@@ -364,7 +364,7 @@ def top(query_group, topfile="salt://hubblestack_nebula_v2/top.nebula", topfile_
     if hubblestack.utils.platform.is_windows():
         topfile = "salt://hubblestack_nebula_v2/win_top.nebula"
 
-    configs = get_top_data(topfile)
+    configs = get_top_data(topfile, __mods__)
 
     configs = ["salt://hubblestack_nebula_v2/" + config.replace(".", "/") + ".yaml" for config in configs]
 
@@ -460,7 +460,7 @@ def _mask_object(object_to_be_masked, topfile):
             # Similar to what we have for nebula and nebula_v2 for older versions and
             # newer versions of profiles
             topfile = "salt://hubblestack_nebula_v2/top_v2.mask"
-        mask_files = get_top_data(topfile)
+        mask_files = get_top_data(topfile, __mods__)
         mask_files = [
             "salt://hubblestack_nebula_v2/" + mask_file.replace(".", "/") + ".yaml" for mask_file in mask_files
         ]
